@@ -16,6 +16,9 @@
 		9407ABCB13D73C2A004C6B10 /* VerticalTableViewViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = 9407ABCA13D73C2A004C6B10 /* VerticalTableViewViewController.h */; };
 		9407ABCD13D73C2A004C6B10 /* VerticalTableViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9407ABCC13D73C2A004C6B10 /* VerticalTableViewViewController.m */; };
 		9407ABD013D73C2A004C6B10 /* VerticalTableViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9407ABCE13D73C2A004C6B10 /* VerticalTableViewViewController.xib */; };
+		9407ABD813D73C68004C6B10 /* RWVerticalTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9407ABD713D73C68004C6B10 /* RWVerticalTableView.m */; };
+		9407ABDB13D73CD2004C6B10 /* TestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9407ABDA13D73CD2004C6B10 /* TestTableViewController.m */; };
+		9407ABDE13D74C9F004C6B10 /* RWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9407ABDD13D74C9F004C6B10 /* RWTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,15 +26,21 @@
 		9407ABB813D73C2A004C6B10 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9407ABBA13D73C2A004C6B10 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9407ABBC13D73C2A004C6B10 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		9407ABC013D73C2A004C6B10 /* VerticalTableView-Info.plist */ = {isa = PBXFileReference; path = "VerticalTableView-Info.plist"; sourceTree = "<group>"; };
+		9407ABC013D73C2A004C6B10 /* VerticalTableView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VerticalTableView-Info.plist"; sourceTree = "<group>"; };
 		9407ABC213D73C2A004C6B10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9407ABC413D73C2A004C6B10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9407ABC613D73C2A004C6B10 /* VerticalTableView-Prefix.pch */ = {isa = PBXFileReference; path = "VerticalTableView-Prefix.pch"; sourceTree = "<group>"; };
-		9407ABC713D73C2A004C6B10 /* VerticalTableViewAppDelegate.h */ = {isa = PBXFileReference; path = VerticalTableViewAppDelegate.h; sourceTree = "<group>"; };
+		9407ABC613D73C2A004C6B10 /* VerticalTableView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VerticalTableView-Prefix.pch"; sourceTree = "<group>"; };
+		9407ABC713D73C2A004C6B10 /* VerticalTableViewAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalTableViewAppDelegate.h; sourceTree = "<group>"; };
 		9407ABC813D73C2A004C6B10 /* VerticalTableViewAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalTableViewAppDelegate.m; sourceTree = "<group>"; };
 		9407ABCA13D73C2A004C6B10 /* VerticalTableViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalTableViewViewController.h; sourceTree = "<group>"; };
 		9407ABCC13D73C2A004C6B10 /* VerticalTableViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalTableViewViewController.m; sourceTree = "<group>"; };
 		9407ABCF13D73C2A004C6B10 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/VerticalTableViewViewController.xib; sourceTree = "<group>"; };
+		9407ABD613D73C68004C6B10 /* RWVerticalTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWVerticalTableView.h; sourceTree = "<group>"; };
+		9407ABD713D73C68004C6B10 /* RWVerticalTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWVerticalTableView.m; sourceTree = "<group>"; };
+		9407ABD913D73CD2004C6B10 /* TestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableViewController.h; sourceTree = "<group>"; };
+		9407ABDA13D73CD2004C6B10 /* TestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableViewController.m; sourceTree = "<group>"; };
+		9407ABDC13D74C9F004C6B10 /* RWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTableViewCell.h; sourceTree = "<group>"; };
+		9407ABDD13D74C9F004C6B10 /* RWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +90,14 @@
 				9407ABC713D73C2A004C6B10 /* VerticalTableViewAppDelegate.h */,
 				9407ABC813D73C2A004C6B10 /* VerticalTableViewAppDelegate.m */,
 				9407ABCA13D73C2A004C6B10 /* VerticalTableViewViewController.h */,
+				9407ABD913D73CD2004C6B10 /* TestTableViewController.h */,
+				9407ABDA13D73CD2004C6B10 /* TestTableViewController.m */,
 				9407ABCC13D73C2A004C6B10 /* VerticalTableViewViewController.m */,
 				9407ABCE13D73C2A004C6B10 /* VerticalTableViewViewController.xib */,
+				9407ABD613D73C68004C6B10 /* RWVerticalTableView.h */,
+				9407ABD713D73C68004C6B10 /* RWVerticalTableView.m */,
+				9407ABDC13D74C9F004C6B10 /* RWTableViewCell.h */,
+				9407ABDD13D74C9F004C6B10 /* RWTableViewCell.m */,
 				9407ABBF13D73C2A004C6B10 /* Supporting Files */,
 			);
 			path = VerticalTableView;
@@ -162,6 +177,9 @@
 				9407ABC513D73C2A004C6B10 /* main.m in Sources */,
 				9407ABC913D73C2A004C6B10 /* VerticalTableViewAppDelegate.m in Sources */,
 				9407ABCD13D73C2A004C6B10 /* VerticalTableViewViewController.m in Sources */,
+				9407ABD813D73C68004C6B10 /* RWVerticalTableView.m in Sources */,
+				9407ABDB13D73CD2004C6B10 /* TestTableViewController.m in Sources */,
+				9407ABDE13D74C9F004C6B10 /* RWTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +253,7 @@
 		9407ABD413D73C2A004C6B10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VerticalTableView/VerticalTableView-Prefix.pch";
 				INFOPLIST_FILE = "VerticalTableView/VerticalTableView-Info.plist";
@@ -246,6 +265,7 @@
 		9407ABD513D73C2A004C6B10 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VerticalTableView/VerticalTableView-Prefix.pch";
 				INFOPLIST_FILE = "VerticalTableView/VerticalTableView-Info.plist";

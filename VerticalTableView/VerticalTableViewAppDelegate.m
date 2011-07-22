@@ -7,7 +7,7 @@
 //
 
 #import "VerticalTableViewAppDelegate.h"
-
+#import "TestTableViewController.h"
 #import "VerticalTableViewViewController.h"
 
 @implementation VerticalTableViewAppDelegate
@@ -20,6 +20,9 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.viewController = [[VerticalTableViewViewController alloc] initWithNibName:@"VerticalTableViewViewController" bundle:nil]; 
+//    TestTableViewController *vc = [[TestTableViewController alloc] initWithStyle:UITableViewStylePlain];
+//    self.window.rootViewController = vc;
+    
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;

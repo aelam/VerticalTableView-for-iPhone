@@ -1,5 +1,5 @@
 //
-//  VerticalTableViewViewController.h
+//  TestTableViewController.h
 //  VerticalTableView
 //
 //  Created by Ryan Wang on 11-7-21.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VerticalTableViewViewController : UIViewController<UITableViewDataSource>
+@interface TestTableViewController : UITableViewController
 
 @end

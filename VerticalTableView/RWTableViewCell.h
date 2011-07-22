@@ -1,5 +1,5 @@
 //
-//  VerticalTableViewViewController.h
+//  RWTableViewCell.h
 //  VerticalTableView
 //
 //  Created by Ryan Wang on 11-7-21.
@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VerticalTableViewViewController : UIViewController<UITableViewDataSource>
+@interface RWTableViewCell : UITableViewCell <NSCoding>
+
+@property (nonatomic, copy)  NSString *reuseIdentifier;
+
 
 @end
