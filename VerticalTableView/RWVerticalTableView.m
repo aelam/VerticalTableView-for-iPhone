@@ -17,8 +17,8 @@
 
 @implementation RWVerticalTableView
 
-@synthesize dataSource;
-@synthesize delegate;
+@synthesize dataSource = _dataSource;
+@synthesize delegate = __delegate;
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -27,7 +27,7 @@
     if (self) {
         // Initialization code here.
         self.backgroundColor = [UIColor whiteColor];
-        self.alwaysBounceVertical = YES;
+        self.delaysContentTouches = YES;
         
         _reusableTableCells = [[NSMutableDictionary alloc] init];
         _visibleCells = [[NSMutableArray alloc] init];
@@ -38,6 +38,24 @@
     return self;
 }
 
+//- (void)setDelegate:(id<UIScrollViewDelegate,RWVerticalTableViewDelegate>)aDelegate {
+//    [super setDelegate:aDelegate];
+//    __delegate = aDelegate;
+//
+//}
+//
+//- (void)setDataSource:(id<RWVerticalTableViewDataSource>)aDataSource {
+//    _dataSource = aDataSource;
+//    
+//}
+
+//- (void)calculateContentSize {
+//    if (__delegate && _dataSource) {
+//        NSInteger rows = [self.dataSource verticalTableView:self numberOfRowsInSection:0];
+//
+//    }
+//}
+
 - (void)layoutSubviews {
     
     _visibleBounds = CGRectMake(self.contentOffset.x, 0, self.frame.size.width, self.frame.size.height);
@@ -45,7 +63,6 @@
     if (self.delegate && self.dataSource) {
         NSInteger rows = [self.dataSource verticalTableView:self numberOfRowsInSection:0];
 
-        //CGFloat width = self.frame.size.width;
         CGFloat cellOffset = 0;
         
         for (int i = 0; i < rows; i++) {
@@ -79,6 +96,7 @@
                     [self addSubview:cell];
                 }
             }
+            // 如果cellFrame与_visibleBounds 没有交集 移出_visibleCells 添加到_reusableTableCells中
             else {
                 RWTableViewCell *tempCell = nil;
                 for(RWTableViewCell *cell in _visibleCells) {
@@ -97,46 +115,9 @@
             cellOffset += cellWidth;                
         }
         
-        self.contentSize = CGSizeMake(cellOffset, self.frame.size.height - 60);
+        self.contentSize = CGSizeMake(cellOffset, self.frame.size.height);
         
     }
-    NIF_TRACE(@"visible Cells : %@", _visibleCells);
-}
-
-- (void)configureUIWhenMoved {
-    if (self.delegate && self.dataSource) {
-        NSInteger rows = [self.dataSource verticalTableView:self numberOfRowsInSection:0];
-        
-        CGFloat width = self.frame.size.width;
-        CGFloat cellOffset = self.contentOffset.x;
-        for(int i = 0; i < rows;i++) {
-            
-            CGFloat cellWidth = [self.delegate tableView:self widthForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-            
-            if (cellOffset < width) {
-                
-                CGRect cellFrame = CGRectMake(cellOffset,0, cellWidth, self.frame.size.height);
-                
-                RWTableViewCell *cell = [self.dataSource verticalTableView:self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-                if(![_visibleCells containsObject:cell]) {
-                    [_visibleCells addObject:cell];
-                } 
-                
-                cell.frame = cellFrame;
-                
-                
-                [_reusableTableCells setObject:cell forKey:cell.reuseIdentifier];
-                
-                [self addSubview:cell];                
-            }
-            cellOffset += cellWidth;                
-            
-        }
-        
-        self.contentSize = CGSizeMake(cellOffset, self.frame.size.height - 40);
-        
-        
-    }    
 }
 
 - (id)dequeueReusableCellWithIdentifier:(NSString *)identifier {
@@ -145,6 +126,11 @@
         return nil;
     }
     return [_reusableTableCells objectForKey:identifier];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint point = [touch locationInView:self];
 }
 
 - (void)dealloc {

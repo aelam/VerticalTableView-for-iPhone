@@ -26,7 +26,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-    NIF_TRACE(@"selected: %d animated : %d",selected,animated);
     // Configure the view for the selected state
 }
 

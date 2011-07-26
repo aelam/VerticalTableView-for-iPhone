@@ -19,11 +19,11 @@
     CGRect                      _visibleBounds;
     NSRange                     _visibleRows;
     
-    UITableView                 *test;
+    id <RWVerticalTableViewDataSource> _dataSource;
 }
 
 @property(nonatomic,assign)   id <RWVerticalTableViewDataSource> dataSource;
-@property(nonatomic,assign)   id <RWVerticalTableViewDelegate>   delegate;
+@property(nonatomic,assign)   id <RWVerticalTableViewDelegate,UIScrollViewDelegate>   delegate;
 
 
 @end

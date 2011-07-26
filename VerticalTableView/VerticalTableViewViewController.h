@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RWVerticalTableView.h"
 
-@interface VerticalTableViewViewController : UIViewController<UITableViewDataSource>
+@interface VerticalTableViewViewController : UIViewController<UITableViewDataSource,RWVerticalTableViewDelegate,RWVerticalTableViewDataSource>
 
 @end
