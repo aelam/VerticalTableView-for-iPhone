@@ -41,6 +41,7 @@
 		9407ABDA13D73CD2004C6B10 /* TestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableViewController.m; sourceTree = "<group>"; };
 		9407ABDC13D74C9F004C6B10 /* RWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTableViewCell.h; sourceTree = "<group>"; };
 		9407ABDD13D74C9F004C6B10 /* RWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTableViewCell.m; sourceTree = "<group>"; };
+		9413DE7513DE6AF500DBD410 /* NIFLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIFLog.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +107,7 @@
 		9407ABBF13D73C2A004C6B10 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9413DE7513DE6AF500DBD410 /* NIFLog.h */,
 				9407ABC013D73C2A004C6B10 /* VerticalTableView-Info.plist */,
 				9407ABC113D73C2A004C6B10 /* InfoPlist.strings */,
 				9407ABC413D73C2A004C6B10 /* main.m */,
@@ -293,6 +295,7 @@
 				9407ABD513D73C2A004C6B10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

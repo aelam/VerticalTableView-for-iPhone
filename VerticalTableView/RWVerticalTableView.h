@@ -15,6 +15,11 @@
 @interface RWVerticalTableView : UIScrollView {
     NSMutableDictionary        *_reusableTableCells;
     NSMutableArray             *_visibleCells;
+    
+    CGRect                      _visibleBounds;
+    NSRange                     _visibleRows;
+    
+    UITableView                 *test;
 }
 
 @property(nonatomic,assign)   id <RWVerticalTableViewDataSource> dataSource;

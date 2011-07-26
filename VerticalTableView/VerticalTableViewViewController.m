@@ -23,7 +23,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    RWVerticalTableView *tableView = [[RWVerticalTableView alloc] initWithFrame:CGRectMake(10, 19, 300, 200)];
+    RWVerticalTableView *tableView = [[RWVerticalTableView alloc] initWithFrame:CGRectMake(10, 19, 300, 50)];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -61,22 +61,42 @@
 }
 
 - (NSInteger)verticalTableView:(RWVerticalTableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return 20000;
 }
 
 - (CGFloat)tableView:(RWVerticalTableView *)tableView widthForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 40;
+    if (indexPath.row % 3 == 0) {
+        return 100;
+    } else if (indexPath.row % 3== 1) {
+        return 150;
+    } else {
+        return 200;        
+    }
+    
 }
 
 - (UITableViewCell *)verticalTableView:(RWVerticalTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     
     RWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NIF_TRACE(@"dequeue : %@", cell);
     if (cell == nil) {
         cell = [[[RWTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        NIF_TRACE(@"alloc new : %@", cell);
     }
     
-    cell.backgroundColor = [UIColor redColor];
+    if (indexPath.row % 3 == 0) {
+        cell.backgroundColor = [UIColor redColor];
+    } else if (indexPath.row % 3== 1) {
+        cell.backgroundColor = [UIColor greenColor];
+    } else {
+        cell.backgroundColor = [UIColor blueColor];
+    }
+    
+
+        
+//    cell.backgroundColor = [UIColor redColor];
     NSLog(@"%d %d",indexPath.section,indexPath.row);
     cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
     // Configure the cell...

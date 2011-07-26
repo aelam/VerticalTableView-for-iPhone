@@ -85,7 +85,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 3;
+    return 200000;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -93,23 +93,28 @@
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NIF_TRACE(@"dequeue cell : %@",cell);
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        NIF_TRACE(@"alloc a new cell : %@",cell);
     }
     
     cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
     // Configure the cell...
+    NIF_TRACE(@"%@", NSStringFromCGSize(self.tableView.contentSize));
     
     return cell;
 }
 
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
-    NSLog(@"%s",_cmd);
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    NSLog(@"%s",_cmd);
-}
+//- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+//    NSLog(@"%s",_cmd);
+//}
+//
+//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+//    NSLog(@"%s",_cmd);
+//    
+//    NSLog(@"%@",self.tableView.visibleCells);
+//}
 
 /*
 // Override to support conditional editing of the table view.

@@ -28,64 +28,79 @@
         // Initialization code here.
         self.backgroundColor = [UIColor whiteColor];
         self.alwaysBounceVertical = YES;
-        self.delaysContentTouches = NO;
         
         _reusableTableCells = [[NSMutableDictionary alloc] init];
         _visibleCells = [[NSMutableArray alloc] init];
+        
+        _visibleRows = NSMakeRange(0, 0);
     }
     
     return self;
 }
 
-- (void)setDataSource:(id<RWVerticalTableViewDataSource>)aDataSource {
-    dataSource = aDataSource;
-    [self configureUIFirstTime];
-}
+- (void)layoutSubviews {
+    
+    _visibleBounds = CGRectMake(self.contentOffset.x, 0, self.frame.size.width, self.frame.size.height);
 
-- (void)setDelegate:(id<RWVerticalTableViewDelegate>)aDelegate {
-    delegate = aDelegate;
-    [self configureUIFirstTime];
-}
-
-//- (void)drawRect:(CGRect)rect {
-//    NSLog(@"%s",_cmd);
-//
-//}
-
-- (void)configureUIFirstTime {
     if (self.delegate && self.dataSource) {
         NSInteger rows = [self.dataSource verticalTableView:self numberOfRowsInSection:0];
 
-        CGFloat width = self.frame.size.width;
-        CGFloat cellOffset = self.contentOffset.x;
-        for(int i = 0; i < rows;i++) {
-            
+        //CGFloat width = self.frame.size.width;
+        CGFloat cellOffset = 0;
+        
+        for (int i = 0; i < rows; i++) {
             CGFloat cellWidth = [self.delegate tableView:self widthForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-
-            if (cellOffset < width) {
-                
-                CGRect cellFrame = CGRectMake(cellOffset,0, cellWidth, self.frame.size.height);
-                
-                RWTableViewCell *cell = [self.dataSource verticalTableView:self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-                if(![_visibleCells containsObject:cell]) {
-                    [_visibleCells addObject:cell];
-                } 
-                
-                cell.frame = cellFrame;
-                
-                
-                [_reusableTableCells setObject:cell forKey:cell.reuseIdentifier];
-                
-                [self addSubview:cell];                
-            }
-            cellOffset += cellWidth;                
+            CGRect cellFrame = CGRectMake(cellOffset,0, cellWidth, self.frame.size.height);
             
+            
+            // 如果cellFrame与_visibleBounds 有交集 
+            if (CGRectIntersectsRect(cellFrame, _visibleBounds)) {
+                
+                // 查找当前应该显示cell的位置是否有cell
+                // 如果有就continue
+                // 如果没有就要创建一个然后add在superview上面
+                RWTableViewCell *tempCell = nil;
+                for(RWTableViewCell *cell in _visibleCells) {
+                    if(CGRectEqualToRect(cell.frame, cellFrame)) {
+                        tempCell = cell;
+                        break;
+                    }
+                }
+                if (tempCell == nil) {
+                    RWTableViewCell *cell = [self.dataSource verticalTableView:self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+                    if(![_visibleCells containsObject:cell]) {
+                        [_visibleCells addObject:cell];
+                    } 
+                    
+                    if ([[_reusableTableCells objectForKey:cell.reuseIdentifier] isEqual:cell]) {
+                        [_reusableTableCells removeObjectForKey:cell.reuseIdentifier];
+                    }
+                    cell.frame = cellFrame;
+                    [self addSubview:cell];
+                }
+            }
+            else {
+                RWTableViewCell *tempCell = nil;
+                for(RWTableViewCell *cell in _visibleCells) {
+                    if(CGRectEqualToRect(cell.frame, cellFrame)) {
+                        tempCell = cell;
+                        break;
+                    }
+                } 
+                if (tempCell) {
+                    [_reusableTableCells setObject:tempCell forKey:tempCell.reuseIdentifier];   
+                    [_visibleCells removeObject:tempCell];
+                }
+            }
+            
+            
+            cellOffset += cellWidth;                
         }
         
-        self.contentSize = CGSizeMake(cellOffset, self.frame.size.height);
-
+        self.contentSize = CGSizeMake(cellOffset, self.frame.size.height - 60);
         
-    }    
+    }
+    NIF_TRACE(@"visible Cells : %@", _visibleCells);
 }
 
 - (void)configureUIWhenMoved {
@@ -118,37 +133,11 @@
             
         }
         
-        self.contentSize = CGSizeMake(cellOffset, self.frame.size.height);
+        self.contentSize = CGSizeMake(cellOffset, self.frame.size.height - 40);
         
         
     }    
 }
-
-
-
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    NSLog(@"%s",_cmd);
-//    UITouch *touch = [touches anyObject];
-//
-//}
-//
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"%s",_cmd);
-    UITouch *touch = [touches anyObject];
-    [self configureUIWhenMoved];
-}
-//
-//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-//    NSLog(@"%s",_cmd);
-//    UITouch *touch = [touches anyObject];
-//
-//}
-//
-//- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-//    NSLog(@"%s",_cmd);
-//    UITouch *touch = [touches anyObject];
-//
-//}
 
 - (id)dequeueReusableCellWithIdentifier:(NSString *)identifier {
     RWTableViewCell *cell = [_reusableTableCells objectForKey:identifier];

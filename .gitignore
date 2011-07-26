@@ -1,0 +1,5 @@
+.DS_Store
+build/
+xcuserdata
+
+VerticalTableView.xcodeproj/project.xcworkspace/contents.xcworkspacedata
